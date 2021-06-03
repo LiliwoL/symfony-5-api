@@ -5,75 +5,45 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Comment
- *
- * @ORM\Table(name="comment", indexes={@ORM\Index(name="IDX_53AD8F83F675F31B", columns={"author_id"}), @ORM\Index(name="IDX_53AD8F834B89032C", columns={"post_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  */
 class Comment
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="post_id", type="integer", nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $postId;
+    private $username;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="author_id", type="integer", nullable=false)
-     */
-    private $authorId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="content", type="text", nullable=false)
+     * @ORM\Column(type="text")
      */
     private $content;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="published_at", type="datetime", nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Post", inversedBy="comments")
      */
-    private $publishedAt;
+    private $post;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPostId(): ?int
+    public function getUsername(): ?string
     {
-        return $this->postId;
+        return $this->username;
     }
 
-    public function setPostId(int $postId): self
+    public function setUsername(string $username): self
     {
-        $this->postId = $postId;
-
-        return $this;
-    }
-
-    public function getAuthorId(): ?int
-    {
-        return $this->authorId;
-    }
-
-    public function setAuthorId(int $authorId): self
-    {
-        $this->authorId = $authorId;
+        $this->username = $username;
 
         return $this;
     }
@@ -90,17 +60,15 @@ class Comment
         return $this;
     }
 
-    public function getPublishedAt(): ?\DateTimeInterface
+    public function getPost(): ?Post
     {
-        return $this->publishedAt;
+        return $this->post;
     }
 
-    public function setPublishedAt(\DateTimeInterface $publishedAt): self
+    public function setPost(?Post $post): self
     {
-        $this->publishedAt = $publishedAt;
+        $this->post = $post;
 
         return $this;
     }
-
-
 }
