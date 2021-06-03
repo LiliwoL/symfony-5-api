@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Post
  *
  * @ORM\Table(name="post", indexes={@ORM\Index(name="IDX_58A92E65F675F31B", columns={"author_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  */
 class Post
 {

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tag
  *
  * @ORM\Table(name="tag", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_4D5855405E237E06", columns={"name"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
  */
 class Tag
 {
