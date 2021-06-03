@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PostTag
  *
  * @ORM\Table(name="post_tag", indexes={@ORM\Index(name="IDX_6ABC1CC4BAD26311", columns={"tag_id"}), @ORM\Index(name="IDX_6ABC1CC44B89032C", columns={"post_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\PostTagRepository")
  */
 class PostTag
 {
