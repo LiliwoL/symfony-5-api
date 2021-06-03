@@ -9,11 +9,3 @@ Cette branche fournit le code nécessaire pour démarrer ce module.
 
 On y trouve une base de données SQLite avec des données de base.
 
-
-## 1. Controllers
-
-On crée les controleurs
-
-```
-php bin/console make:controller
-```
